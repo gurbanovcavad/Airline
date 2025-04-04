@@ -10,7 +10,8 @@ def index(request):
 
 def flight(request, id):
     f = Flight.objects.get(pk=id)
-    context = {'flight': f, 'passengers': f.passengers.all(), 'non_passengers': Passenger.objects.exclude(flights=f).all()}
+    context = {'flight': f, 'passengers': f.passengers.all(), 
+               'non_passengers': Passenger.objects.exclude(flights=f).all()}
     return render(request, 'flights/flight.html', context)
 
 def book(request, id):
